@@ -6,5 +6,14 @@ public class Mage extends Personagem {
         this.maxMp = 200;
         defineStats();
     }
-    
+
+    @Override
+    public void digaNome() {
+        System.out.println("*~*~ Eu sou " + nome + ", mestre das foças arcanas! ~*~*");
+    }
+
+    @Override
+    public void ataque() {
+        System.out.println(nome + " não se importa com o tamanho da sala e lança uma bola de fogo!");
+    }
 }

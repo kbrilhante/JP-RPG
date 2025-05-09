@@ -42,4 +42,11 @@ public class Personagem {
             System.out.println("Inventário cheio, você derrubou " + naoAdicionado + " itens no chão.");
         }
     }
+    public void digaNome() {
+        System.out.println("Eu sou " + nome);
+    }
+
+    public void ataque() {
+        System.out.println(nome + " ataca com coragem.");
+    }
 }

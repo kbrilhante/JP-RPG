@@ -1,44 +1,53 @@
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
         String nome;
         char classe;
-        // ArrayList<Personagem> grupo = new ArrayList<>();
-        Personagem heroi;
+        ArrayList<Personagem> grupo = new ArrayList<>();
         
-
         Scanner scan = new Scanner(System.in);
         System.out.print("Bem vindo, aventureiro! Qual é o seu nome?\n> ");
         nome = scan.nextLine();
 
-        System.out.print("Qual é a sua classe?\n(W - Warrior | M - Mage | H - Healer)\n> ");
+        System.out.print("Qual é a sua classe?\n(W - Warrior | M - Mage | H - Healer | B - Bard)\n> ");
         classe = scan.next().charAt(0);
         classe = Character.toUpperCase(classe);
         // scan.nextLine();
 
         switch(classe) {
-            case 'W' -> heroi = new Warrior(nome);
-            case 'M' -> heroi = new Mage(nome);
-            case 'H' -> heroi = new Healer(nome);
+            case 'W' -> grupo.add(new Warrior(nome));
+            case 'M' -> grupo.add(new Mage(nome));
+            case 'H' -> grupo.add(new Healer(nome));
+            case 'B' -> grupo.add(new Bard(nome));
             default -> {
-                heroi = new Personagem(nome);
+                grupo.add(new Personagem(nome));
             }
         }
         
-        Personagem bob = new Personagem("Bob");
-        Warrior warrior = new Warrior("Carlos");
-        Mage mage = new Mage("Roxério");
-        Healer healer = new Healer("Cleudesvaldo");
+        grupo.add(new Personagem("Bob"));
+        grupo.add(new Warrior("Carlos"));
+        grupo.add(new Mage("Roxério"));
+        grupo.add(new Healer("Cleudesvaldo"));
+        grupo.add(new Bard("Fagner"));
 
-        heroi.fichaDoPersonagem();
-        bob.fichaDoPersonagem();
-        warrior.fichaDoPersonagem();
-        mage.fichaDoPersonagem();
-        healer.fichaDoPersonagem();
-        healer.curaGrupo();
-        System.out.println();
+        for (Personagem heroi : grupo) {
+            heroi.fichaDoPersonagem();
+        }
+        System.out.println("-------------------------------------\n");
+        for (Personagem heroi : grupo) {
+            if (heroi instanceof Healer healer) {
+                healer.curaGrupo();                
+                System.out.println();
+            }
+            if (heroi instanceof Bard rick) {
+                rick.sing();                
+                System.out.println();
+            }
+        }
+        System.out.println("-------------------------------------\n");
     }
 }
 
