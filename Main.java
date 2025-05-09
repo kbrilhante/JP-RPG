@@ -5,7 +5,9 @@ public class Main {
     public static void main(String[] args) {
         String nome;
         char classe;
+        // ArrayList<Personagem> grupo = new ArrayList<>();
         Personagem heroi;
+        
 
         Scanner scan = new Scanner(System.in);
         System.out.print("Bem vindo, aventureiro! Qual é o seu nome?\n> ");
@@ -16,24 +18,28 @@ public class Main {
         classe = Character.toUpperCase(classe);
         // scan.nextLine();
 
-        heroi = new Personagem(nome, classe);
-
-        heroi.pegaItem(new Item("Poção de cura", true, 17, 20));
-        heroi.pegaItem(new Item("Poção de cura", true, 5, 20));
-        heroi.pegaItem(new Item("Poção de cura", true, 5, 20));
-        heroi.pegaItem(new Item("Poção de cura", true, 5, 20));
-        heroi.pegaItem(new Item("Poção de cura", true, 5, 20));
-        heroi.pegaItem(new Item("Poção de cura", true, 5, 20));
-        heroi.pegaItem(new Item("Poção de cura", true, 5, 20));
-        heroi.pegaItem(new Item("Poção de cura", true, 5, 20));
-        heroi.pegaItem(new Item("Poção de cura", true, 5, 20));
-        heroi.pegaItem(new Item("Poção de cura", true, 5, 20));
-        heroi.pegaItem(new Item("Poção de cura", true, 5, 20));
-        heroi.pegaItem(new Item("Poção de cura", true, 5, 20));
-        heroi.pegaItem(new Item("Poção de cura", true, 5, 20));
-        heroi.pegaItem(new Item("Poção de cura", true, 5, 20));
-
+        switch(classe) {
+            case 'W' -> heroi = new Warrior(nome);
+            case 'M' -> heroi = new Mage(nome);
+            case 'H' -> heroi = new Healer(nome);
+            default -> {
+                heroi = new Personagem(nome);
+            }
+        }
+        
+        Personagem bob = new Personagem("Bob");
+        Warrior warrior = new Warrior("Carlos");
+        Mage mage = new Mage("Roxério");
+        Healer healer = new Healer("Cleudesvaldo");
 
         heroi.fichaDoPersonagem();
+        bob.fichaDoPersonagem();
+        warrior.fichaDoPersonagem();
+        mage.fichaDoPersonagem();
+        healer.fichaDoPersonagem();
+        healer.curaGrupo();
+        System.out.println();
     }
 }
+
+

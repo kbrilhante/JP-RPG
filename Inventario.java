@@ -1,4 +1,3 @@
-
 import java.util.ArrayList;
 
 public class Inventario {
@@ -24,16 +23,23 @@ public class Inventario {
     public int addItem(Item item) {
         // vamos retornar quantos itens não foram adicionados ao invetário
         int excedente = item.getQuantidade();
-        System.out.println(excedente);
         for (Item itemInvetario : itens) {
             if (itemInvetario.getNome().equals(item.getNome()) && item.isEmpilhavel()){
-                // continuamos aqui
+                int podeAdicionar = itemInvetario.getTamanhoPilha() - itemInvetario.getQuantidade();
+                if (podeAdicionar > 0) {
+                    int add = Math.min(podeAdicionar, excedente);
+                    itemInvetario.addQuantidade(add);
+                    excedente -= add;
+                    if (excedente == 0) {
+                        return 0;
+                    }
+                }
             }
         }
         if (itens.size() < capacidade) {
             itens.add(new Item(item.getNome(), item.isEmpilhavel(), excedente, item.getTamanhoPilha()));
             return 0;
         }
-        return 0;
+        return excedente;
     }
 }
