@@ -38,6 +38,8 @@ public class Main {
         }
         System.out.println("-------------------------------------\n");
         for (Personagem heroi : grupo) {
+            heroi.digaNome();
+            heroi.ataque();
             if (heroi instanceof Healer healer) {
                 healer.curaGrupo();                
                 System.out.println();
