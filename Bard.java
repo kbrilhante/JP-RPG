@@ -1,7 +1,12 @@
+
+
 public class Bard extends Personagem {
 
     public Bard(String nome) {
         super(nome);
+        maxHp = 90;
+        maxMp = 150;
+        defineStats();
     }
 
     @Override

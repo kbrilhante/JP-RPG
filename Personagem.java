@@ -1,4 +1,4 @@
-public class Personagem {
+public abstract class Personagem {
     protected String nome;
     // private char classe;
     protected int maxHp, maxMp;
@@ -9,8 +9,6 @@ public class Personagem {
         this.nome = nome;
         this.maxHp = 100;
         this.maxMp = 100;
-        defineStats();
-
         this.inventario = new Inventario(8);
         defineInventario();
     }
@@ -29,7 +27,7 @@ public class Personagem {
 
     public void fichaDoPersonagem() {
         System.out.println("==== Ficha do Personagem ====");
-        System.out.println("Nome: " + nome);
+        digaNome();
         System.out.println("HP: " + hp + "/" + maxHp);
         System.out.println("MP: " + mp + "/" + maxMp);
         inventario.listaItens();
@@ -42,11 +40,8 @@ public class Personagem {
             System.out.println("Inventário cheio, você derrubou " + naoAdicionado + " itens no chão.");
         }
     }
-    public void digaNome() {
-        System.out.println("Eu sou " + nome);
-    }
 
-    public void ataque() {
-        System.out.println(nome + " ataca com coragem.");
-    }
+    public abstract void digaNome();
+
+    public abstract void ataque();
 }
